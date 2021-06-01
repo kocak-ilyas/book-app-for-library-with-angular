@@ -1,0 +1,13 @@
+<p>book-item works!</p>
+<div class="card" style="width: 18rem">
+  <img src="{{ books.imageUrl }}" class="card-img-top" alt="link1" />
+  <div class="card-body">
+    <h5 class="card-title">{{ books.name }}</h5>
+    <a href="#" class="btn btn-primary">
+      {{ books.available ? "available" : "NOT available" }}</a
+    >
+    <p class="card-text">{{ books.page }}</p>
+    <p class="card-text">{{ books.date | date: "d MMM Y " }}</p>
+    <p class="card-text">{{ books.explanation }}</p>
+  </div>
+</div>
