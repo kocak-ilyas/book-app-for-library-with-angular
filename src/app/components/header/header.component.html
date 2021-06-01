@@ -1,3 +1,22 @@
-<header class="header">
-    <p>header works!</p>
+<header>
+  <p>header works!</p>
+  <span>ADD TOOLBAR - BOOTSTRAP</span>
+  <ul class="header-menu">
+    <li>
+      <a
+        routerLink="/"
+        class="passive"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a routerLink="/about" class="passive" routerLinkActive="active">About</a>
+    </li>
+    <li>
+      <a routerLink="/books" class="passive" routerLinkActive="active">Books</a>
+    </li>
+  </ul>
 </header>

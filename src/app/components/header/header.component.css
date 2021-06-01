@@ -1,0 +1,19 @@
+.header-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.passive {
+  color: green;
+  padding: 0 10px;
+  opacity: 0.5;
+}
+
+.active {
+  color: blue;
+  padding: 0 10px;
+  opacity: 1;
+}
