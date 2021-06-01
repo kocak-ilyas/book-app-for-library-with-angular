@@ -1,9 +1,14 @@
-<!-- <p>books works!</p>
-<main>
-  <h1 class="page-title">books</h1>
-  <p class="page-description">book App</p>
-</main> -->
-<hr />
-<div class="row">
+<div class="row mt-1">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button
+      type="button"
+      class="btn btn-primary active me-md-2"
+      data-bs-toggle="button"
+      autocomplete="off"
+      aria-pressed="true"
+    >
+    Add New Book
+    </button>
+  </div>
   <app-book-item [books]="bookItems" ></app-book-item>
 </div>
