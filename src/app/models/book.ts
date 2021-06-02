@@ -1,9 +1,6 @@
 export interface Book {
-  name?: string;
   title: string;
-  phone: string;
-  email?: string;
-  address?: string;
+  body?: string;
 }
 // export interface Book {
 //     imageUrl: string;
