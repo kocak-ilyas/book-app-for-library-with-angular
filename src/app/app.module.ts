@@ -19,9 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     {
       provide: 'apiUrl',
-      // useValue: 'https://demo.limantech.com/cards/public/api/cards',  // çalışıyor
-      useValue: 'https://jsonplaceholder.typicode.com/posts',
-      // useValue: 'http://demo.limantech.com/cards/public/api'
+      useValue: 'https://demo.limantech.com/cards/public/api',
     },
   ],
   bootstrap: [AppComponent],

@@ -13,6 +13,6 @@ export class BookService {
     private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.apiUrl);
+    return this.http.get<Book[]>(this.apiUrl+"/cards");
   }
 }
