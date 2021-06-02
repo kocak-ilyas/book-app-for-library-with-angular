@@ -1,7 +1,8 @@
 <div class="card" style="width: 18rem">
   <ul>
-    <li>  {{book.title}}</li>
-    <li>  {{book.body}}</li>
+    <li>{{ book.title }}</li>
+    <li *ngIf="book.body">{{ book.body }}</li>
+    <li *ngIf="!book.body">There is no body </li>
   </ul>
 </div>
 <!-- <div class="card" style="width: 18rem">
