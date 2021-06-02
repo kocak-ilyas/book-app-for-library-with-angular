@@ -7,10 +7,21 @@ import { HeaderComponent } from './components/header/header.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, AboutComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    {
+      provide:"apiUrl",
+      useValue: 'http://demo.limantech.com/cards/public/api'
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

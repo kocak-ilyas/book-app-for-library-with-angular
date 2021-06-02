@@ -7,7 +7,7 @@ import { Book } from 'src/app/models/book';
   styleUrls: ['./book-item.component.css'],
 })
 export class BookItemComponent implements OnInit {
-  @Input() books!: Book;
+  @Input() Books!: Book;
   constructor() {}
 
   ngOnInit(): void {}
