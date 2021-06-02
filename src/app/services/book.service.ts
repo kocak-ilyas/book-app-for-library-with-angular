@@ -7,12 +7,15 @@ import { Book } from '../models/book';
   providedIn: 'root',
 })
 export class BookService {
-
   constructor(
-    @Inject('apiUrl') private apiUrl:string,
-    private http: HttpClient) {}
+    @Inject('apiUrl') private apiUrl: string,
+    private http: HttpClient
+  ) {}
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.apiUrl+"/cards");
+    return this.http.get<Book[]>(this.apiUrl + '/cards');
+  }
+  addBook(book: Book) {
+    return this.http.post(this.apiUrl + '/cards', book);
   }
 }
