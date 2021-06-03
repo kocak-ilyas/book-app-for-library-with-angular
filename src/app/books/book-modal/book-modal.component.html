@@ -39,8 +39,8 @@
               <input type="text" class="form-control" id="recipient-name4" formControlName="email" />
           </div>
           <div class="mb-3">
-            <label for="recipient-name5" class="col-form-label" formControlName="address">Address</label>
-            <input type="text" class="form-control" id="recipient-name5" />
+            <label for="recipient-name5" class="col-form-label">Address</label>
+            <input type="text" class="form-control" id="recipient-name5" formControlName="address" />
             </div>
             <!-- <div class="mb-3">
             <label for="message-text" class="col-form-label">Message:</label>
@@ -55,5 +55,8 @@
         <button type="button" class="btn btn-primary" (click)="addBook()">Send message</button>
       </div>
     </div>
+    <label for="item-input">Add an dialog:</label>
+    <input type="text" id="item-input" #newDialog>
+    <button (click)="addNewDialog(newDialog.value)">Add to parent's dialog</button>
   </div>
 </div>

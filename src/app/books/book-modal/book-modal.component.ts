@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookService } from 'src/app/services/book.service';
 
@@ -8,6 +8,10 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./book-modal.component.css'],
 })
 export class BookModalComponent implements OnInit {
+  @Output() newDialogEvent = new EventEmitter<string>();
+  addNewDialog(value: string) {
+    this.newDialogEvent.emit(value);
+  }
   bookForm!: FormGroup;
   constructor(private fb: FormBuilder, private bookService: BookService) {}
 

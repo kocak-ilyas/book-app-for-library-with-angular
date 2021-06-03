@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '../models/book';
 import { BookService } from '../services/book.service';
 
@@ -18,6 +18,10 @@ export class BooksComponent implements OnInit {
   //   explanation: 'Book is very goood',
   // };
   books!: Book[];
+
+  items = ['item1', 'item2', 'item3', 'item4'];
+  dialogs = ['dialog1', 'dialog2'];
+
   constructor(private bookService: BookService) {}
   ngOnInit(): void {
     this.getBooks();
@@ -27,5 +31,13 @@ export class BooksComponent implements OnInit {
       this.books = res;
       console.log(this.books);
     });
+  }
+  addItem(newItem: string) {
+    this.items.push(newItem);
+    console.log(this.items);
+  }
+  addDialog(newDialog: string) {
+    this.dialogs.push(newDialog);
+    console.log(this.dialogs);
   }
 }
