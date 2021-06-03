@@ -1,3 +1,4 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookService } from 'src/app/services/book.service';
@@ -9,9 +10,7 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class BookModalComponent implements OnInit {
   @Output() newDialogEvent = new EventEmitter<string>();
-  addNewDialog(value: string) {
-    this.newDialogEvent.emit(value);
-  }
+
   bookForm!: FormGroup;
   constructor(private fb: FormBuilder, private bookService: BookService) {}
 
@@ -25,11 +24,12 @@ export class BookModalComponent implements OnInit {
     });
   }
   addBook(): void {
-    console.log(this.bookForm.value);
-    this.bookService.addBook(this.bookForm.value).subscribe((res: any) => {
-      alert(res); // toast ekle
-      // getBooks() sayfayı yenile books.component.ts
-      console.log(res);
-    });
+    try {
+      this.bookService.postBook(this.bookForm.value).subscribe((res: any) => {
+        this.newDialogEvent.emit(res);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

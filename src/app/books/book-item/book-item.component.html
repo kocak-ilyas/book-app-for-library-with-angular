@@ -1,22 +1,13 @@
 <div class="container">
   <div *ngIf="book.imageUrl" class="card" style="width: 18rem">
-    <img
-      *ngIf="book.imageUrl"
-      src="{{ book.imageUrl }}"
-      class="card-img-top"
-      alt="link1"
-    />
-    <img
-      *ngIf="!book.imageUrl"
+    <img *ngIf="book.imageUrl" src="{{ book.imageUrl }}" class="card-img-top" alt="link1" />
+    <img *ngIf="!book.imageUrl"
       src="https://www.socialworker.com/downloads/749/download/nomore600.jpg?cb=f7260f1556f7a66a2f5650ae813ca859&w=600&h="
-      class="card-img-top"
-      alt="link1"
-    />
+      class="card-img-top" alt="link1" />
     <div class="card-body">
       <h5 class="card-title">Name: {{ book.name }}</h5>
       <a href="#" class="btn btn-primary">
-        {{ book.available ? "available" : "NOT available" }}</a
-      >
+        {{ book.available ? "available" : "NOT available" }}</a>
       <p class="card-text">Page: {{ book.page }}</p>
       <p class="card-text">Date: {{ book.date | date: "d MMM Y " }}</p>
       <p class="card-text">Explanation: {{ book.explanation }}</p>
@@ -34,6 +25,3 @@
     </ul>
   </div>
 </div>
-<label for="item-input">Add an item:</label>
-<input type="text" id="item-input" #newItem>
-<button (click)="addNewItem(newItem.value)">Add to parent's list</button>

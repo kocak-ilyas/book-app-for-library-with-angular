@@ -1,9 +1,12 @@
 <div class="flex m-3 p-3">
   <app-book-modal (newDialogEvent)="addDialog($event)"></app-book-modal>
+  <div *ngIf="dialog.show" class="alert alert-primary" role="alert">
+    {{dialog.message}}
+  </div>
   <div class="container">
     <div class="row row-cols-3">
       <div *ngFor="let book of books">
-        <app-book-item [book]="book" (newItemEvent)="addItem($event)"></app-book-item>
+        <app-book-item [book]="book"></app-book-item>
       </div>
     </div>
   </div>
