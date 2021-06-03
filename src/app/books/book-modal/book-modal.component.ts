@@ -23,6 +23,8 @@ export class BookModalComponent implements OnInit {
   addBook(): void {
     console.log(this.bookForm.value);
     this.bookService.addBook(this.bookForm.value).subscribe((res: any) => {
+      alert(res); // toast ekle
+      // getBooks() sayfayı yenile books.component.ts
       console.log(res);
     });
   }
