@@ -12,7 +12,7 @@ export class BookModalComponent implements OnInit {
   @Output() newDialogEvent = new EventEmitter<string>();
 
   bookForm!: FormGroup;
-  constructor(private fb: FormBuilder, private bookService: BookService) {}
+  constructor(private fb: FormBuilder, public bookService: BookService) {}
 
   ngOnInit(): void {
     this.bookForm = this.fb.group({
@@ -25,9 +25,7 @@ export class BookModalComponent implements OnInit {
   }
   addBook(): void {
     try {
-      this.bookService.postBook(this.bookForm.value).subscribe((res: any) => {
-        this.newDialogEvent.emit(res);
-      });
+      this.bookService.postBook(this.bookForm.value)
     } catch (error) {
       console.log(error);
     }

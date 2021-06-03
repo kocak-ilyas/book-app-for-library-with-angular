@@ -8,28 +8,9 @@ import { BookService } from '../services/book.service';
   styleUrls: ['./books.component.css'],
 })
 export class BooksComponent implements OnInit {
-  books!: Book[];
-
-  dialog = { show: false, message: 'No message!!!' };
-
-  constructor(private bookService: BookService) {}
+ 
+  constructor(public bookService: BookService) {}
   ngOnInit(): void {
-    this.getBooks();
-  }
-  getBooks(): void {
-    this.bookService.getBooks().subscribe((res: Book[]) => {
-      this.books = res;
-    });
-  }
-
-  addDialog(postResponse: string) {
-    this.dialog = {
-      message: postResponse,
-      show: true,
-    };
-    window.setTimeout(() => {
-      this.dialog.show = false;
-    }, 5000);
-    this.getBooks();
+    this.bookService.getBooks()
   }
 }
