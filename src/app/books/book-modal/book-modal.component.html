@@ -1,44 +1,44 @@
 <div class="flex">
   <div class="row justify-content-between">
-    <div class="col-6">
-      <h1 class="me-md-2">Book List</h1>
+    <div class="col-5 pl-2">
+      <h4 class="me-md-2 p-1 text-center">Book List</h4>
     </div>
     <div class="col-3">
-      <button type="button" class="btn btn-primary me-md-2 m-1 p-1" data-bs-toggle="modal" data-bs-target="#bookModal"
-        data-bs-whatever="@getbootstrap">
+      <button type="button" class="btn btn-primary me-md-2 m-1 p-1 btn-book" data-bs-toggle="modal"
+        data-bs-target="#bookModal" data-bs-whatever="@getbootstrap">
         Add Book
       </button>
     </div>
   </div>
 </div>
 <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="bookModalLabel">
-          Please fill in the new book information
+          Add new Book
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="bookForm">
-          <div class="mb-3">
-            <label for="recipient-name1" class="col-form-label">Title: required maxLength(255)</label>
+          <div class="mb-1">
+            <label for="recipient-name1" class="col-form-label">Title: required max(255)</label>
             <input type="text" class="form-control" id="recipient-name1" formControlName="title" />
           </div>
-          <div class="mb-3">
-            <label for="recipient-name3" class="col-form-label">Phone: required maxLength(20)</label>
+          <div class="mb-1">
+            <label for="recipient-name3" class="col-form-label">Phone: required max(20)</label>
             <input type="text" class="form-control" id="recipient-name3" formControlName="phone" />
           </div>
-          <div class="mb-3">
-            <label for="recipient-name2" class="col-form-label">Name: maxLength(50)</label>
+          <div class="mb-1">
+            <label for="recipient-name2" class="col-form-label">Name: max(50)</label>
             <input type="text" class="form-control" id="recipient-name2" formControlName="name" />
           </div>
-          <div class="mb-3">
-            <label for="recipient-name4" class="col-form-label">Email: mail formatter maxLength(50)</label>
+          <div class="mb-1">
+            <label for="recipient-name4" class="col-form-label">Email: mail max(50)</label>
             <input type="text" class="form-control" id="recipient-name4" formControlName="email" />
           </div>
-          <div class="mb-3">
+          <div class="mb-1">
             <label for="address-text" class="col-form-label">Address: maxLength(255)</label>
             <textarea class="form-control" id="address-text" formControlName="address"></textarea>
           </div>

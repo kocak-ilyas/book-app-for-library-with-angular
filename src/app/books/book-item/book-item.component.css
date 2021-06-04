@@ -18,3 +18,23 @@
   line-height: 1.4;
   height: 15px;
 }
+
+.item-container{
+  max-height:  400px
+}
+
+.book-text{
+  font-size: 0.6rem;
+  height: 15px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.book-button{
+ width: 50px;
+ margin: 6px;
+ /* margin-left: 100px;
+ margin-bottom: 5px;
+ padding: 1px; */
+ font-size: 0.7rem;
+}
