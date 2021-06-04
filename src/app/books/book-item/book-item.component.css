@@ -1,0 +1,20 @@
+.title {
+  font-size: 1rem;
+  line-height: 1.2;
+  height: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.address {
+  font-size: 0.6rem;
+  line-height: 3;
+  height: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filter-badge {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  height: 15px;
+}
