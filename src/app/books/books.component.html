@@ -7,7 +7,7 @@
 </div>
 <div *ngIf="!bookService.dialog.spin">
   <app-book-modal></app-book-modal>
-  <div class="container-fluid mb-5">
+  <div class="container-fluid">
     <div class="row">
       <div *ngFor="let book of bookService.filteredBook">
         <app-book-item [book]="book"></app-book-item>
