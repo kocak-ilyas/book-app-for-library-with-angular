@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Book } from '../models/book';
+import { Component, OnInit } from '@angular/core';
 import { BookService } from '../services/book.service';
 
 @Component({
@@ -8,9 +7,8 @@ import { BookService } from '../services/book.service';
   styleUrls: ['./books.component.css'],
 })
 export class BooksComponent implements OnInit {
- 
   constructor(public bookService: BookService) {}
   ngOnInit(): void {
-    this.bookService.getBooks()
+    this.bookService.getBooks();
   }
 }

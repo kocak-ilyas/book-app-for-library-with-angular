@@ -10,5 +10,5 @@ import { BookService } from 'src/app/services/book.service';
 export class BookItemComponent implements OnInit {
   @Input() book!: Book;
   constructor(public bookService: BookService) {}
-  ngOnInit(): void {  }
+  ngOnInit(): void {}
 }

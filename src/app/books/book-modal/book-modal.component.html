@@ -23,29 +23,25 @@
       <div class="modal-body">
         <form [formGroup]="bookForm">
           <div class="mb-3">
-            <label for="recipient-name1" class="col-form-label">Title</label>
+            <label for="recipient-name1" class="col-form-label">Title:</label>
             <input type="text" class="form-control" id="recipient-name1" formControlName="title" />
           </div>
           <div class="mb-3">
-            <label for="recipient-name2" class="col-form-label">Name</label>
+            <label for="recipient-name2" class="col-form-label">Name:</label>
             <input type="text" class="form-control" id="recipient-name2" formControlName="name" />
           </div>
           <div class="mb-3">
-            <label for="recipient-name3" class="col-form-label">Phone</label>
+            <label for="recipient-name3" class="col-form-label">Phone:</label>
             <input type="text" class="form-control" id="recipient-name3" formControlName="phone" />
           </div>
           <div class="mb-3">
-            <label for="recipient-name4" class="col-form-label">Email</label>
+            <label for="recipient-name4" class="col-form-label">Email:</label>
             <input type="text" class="form-control" id="recipient-name4" formControlName="email" />
           </div>
           <div class="mb-3">
-            <label for="recipient-name5" class="col-form-label">Address</label>
-            <input type="text" class="form-control" id="recipient-name5" formControlName="address" />
+            <label for="address-text" class="col-form-label">Address:</label>
+            <textarea class="form-control" id="address-text" formControlName="address"></textarea>
           </div>
-          <!-- <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div> -->
         </form>
       </div>
       <div class="modal-footer">
