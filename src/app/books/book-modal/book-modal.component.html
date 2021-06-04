@@ -23,23 +23,23 @@
       <div class="modal-body">
         <form [formGroup]="bookForm">
           <div class="mb-3">
-            <label for="recipient-name1" class="col-form-label">Title:</label>
+            <label for="recipient-name1" class="col-form-label">Title: required maxLength(255)</label>
             <input type="text" class="form-control" id="recipient-name1" formControlName="title" />
           </div>
           <div class="mb-3">
-            <label for="recipient-name2" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="recipient-name2" formControlName="name" />
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name3" class="col-form-label">Phone:</label>
+            <label for="recipient-name3" class="col-form-label">Phone: required maxLength(20)</label>
             <input type="text" class="form-control" id="recipient-name3" formControlName="phone" />
           </div>
           <div class="mb-3">
-            <label for="recipient-name4" class="col-form-label">Email:</label>
+            <label for="recipient-name2" class="col-form-label">Name: maxLength(50)</label>
+            <input type="text" class="form-control" id="recipient-name2" formControlName="name" />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name4" class="col-form-label">Email: mail formatter maxLength(50)</label>
             <input type="text" class="form-control" id="recipient-name4" formControlName="email" />
           </div>
           <div class="mb-3">
-            <label for="address-text" class="col-form-label">Address:</label>
+            <label for="address-text" class="col-form-label">Address: maxLength(255)</label>
             <textarea class="form-control" id="address-text" formControlName="address"></textarea>
           </div>
         </form>
@@ -48,7 +48,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="bookForm.invalid"
           (click)="bookService.postBook(bookForm.value)">
           Save Book
         </button>

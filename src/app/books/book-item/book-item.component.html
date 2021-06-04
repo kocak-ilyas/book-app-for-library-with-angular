@@ -4,12 +4,12 @@
       *** API ***
     </h6>
     <ul class="list-group list-group-flush">
+      <li class="list-group-item">Api title: {{ book.title }}</li>
+      <li class="list-group-item">Api phone: {{ book.phone }}</li>
       <li class="list-group-item">API Name: {{ book.name || "-" }}</li>
       <li class="list-group-item">API address: {{ book.address || "-" }}</li>
       <li class="list-group-item">Api email: {{ book.email || "-" }}</li>
       <li class="list-group-item">Api id: {{ book.id }}</li>
-      <li class="list-group-item">Api phone: {{ book.phone }}</li>
-      <li class="list-group-item">Api title: {{ book.title }}</li>
       <button type="button" class="btn btn-danger" (click)="bookService.deleteBook(book)">
         Delete
       </button>
