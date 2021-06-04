@@ -19,6 +19,7 @@ export class BookService {
       (res: Book[]) => {
         this.books = res;
         this.filteredBook = res;
+
         this.dialog.spin = false;
       },
       (err: any) => this.getError(err.message)
@@ -32,7 +33,7 @@ export class BookService {
       (err: any) => this.getError(err.message)
     );
     this.getDialogModal();
-    this.getBooks();
+    
   }
   deleteBook(book: any): void {
     this.http.delete(this.apiUrl + '/cards/' + book.id).subscribe(
@@ -42,14 +43,14 @@ export class BookService {
       (err: any) => this.getError(err.message)
     );
     this.getDialogModal();
-    this.getBooks();
   }
 
   getDialogModal(): void {
     (this.dialog.show = true),
       window.setTimeout(() => {
         this.dialog.show = false;
-      }, 5000);
+        this.getBooks();
+      }, 2000);
   }
   getError(err: string): void {
     this.dialog.message = err;
