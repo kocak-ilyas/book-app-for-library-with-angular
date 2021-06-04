@@ -1,10 +1,11 @@
 export interface Book {
-  imageUrl?: string;
+  // imageUrl?: string;
+  // available?: boolean;
+  // page?: number;
+  // date?: any;
+  // explanation?: string;
+
   name: string;
-  available?: boolean;
-  page?: number;
-  date?: any;
-  explanation?: string;
 
   address?: string;
   email?: string;

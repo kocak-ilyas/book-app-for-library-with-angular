@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="book.imageUrl" class="card" style="width: 18rem">
+  <!-- <div *ngIf="book.imageUrl" class="card" style="width: 18rem">
     <img *ngIf="book.imageUrl" src="{{ book.imageUrl }}" class="card-img-top" alt="link1" />
     <img *ngIf="!book.imageUrl"
       src="https://www.socialworker.com/downloads/749/download/nomore600.jpg?cb=f7260f1556f7a66a2f5650ae813ca859&w=600&h="
@@ -12,16 +12,21 @@
       <p class="card-text">Date: {{ book.date | date: "d MMM Y " }}</p>
       <p class="card-text">Explanation: {{ book.explanation }}</p>
     </div>
-  </div>
+  </div> -->
 
   <div *ngIf="book.phone" class="card" style="width: 18rem">
-    <h6 class="card-title m-1 p-1 text-center">*** API *** Name:{{ book.name }}</h6>
+    <h6 class="card-title m-1 p-1 text-center">
+      *** API *** Name:{{ book.name }}
+    </h6>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">API address: {{ book.address || "-"}}</li>
-      <li class="list-group-item">Api email: {{ book.email|| "-" }}</li>
+      <li class="list-group-item">API address: {{ book.address || "-" }}</li>
+      <li class="list-group-item">Api email: {{ book.email || "-" }}</li>
       <li class="list-group-item">Api id: {{ book.id }}</li>
       <li class="list-group-item">Api phone: {{ book.phone }}</li>
       <li class="list-group-item">Api title: {{ book.title }}</li>
+      <button type="button" class="btn btn-danger" (click)="bookService.deleteBook(book)">
+        Delete
+      </button>     
     </ul>
   </div>
 </div>

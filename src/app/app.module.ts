@@ -16,12 +16,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [
-    {
-      provide: 'apiUrl',
-      useValue: 'https://demo.limantech.com/cards/public/api',
-    },
-  ],
+  // providers: [
+  //   {
+  //     provide: 'apiUrl',
+  //     useValue: 'https://demo.limantech.com/cards/public/api',
+  //   },
+  // ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

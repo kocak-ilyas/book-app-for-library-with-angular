@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
   selector: 'app-book-item',
@@ -8,6 +9,6 @@ import { Book } from 'src/app/models/book';
 })
 export class BookItemComponent implements OnInit {
   @Input() book!: Book;
-  constructor() {}
-  ngOnInit(): void {}
+  constructor(public bookService: BookService) {}
+  ngOnInit(): void {  }
 }
