@@ -8,8 +8,9 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { BookSearchComponent } from './components/header/book-search/book-search.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HeaderComponent, AboutComponent],
+  declarations: [AppComponent, HomeComponent, HeaderComponent, AboutComponent, BookSearchComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

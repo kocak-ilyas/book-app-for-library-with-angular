@@ -9,7 +9,7 @@
   <app-book-modal></app-book-modal>
   <div class="container">
     <div class="row row-cols-3">
-      <div *ngFor="let book of bookService.books">
+      <div *ngFor="let book of bookService.filteredBook">
         <app-book-item [book]="book"></app-book-item>
       </div>
     </div>
