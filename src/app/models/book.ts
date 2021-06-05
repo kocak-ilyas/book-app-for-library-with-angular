@@ -1,8 +1,15 @@
 export interface Book {
-  name: string;
-  address?: string;
-  email?: string;
+  createdTime?: string;
+  fields?: {
+    amazon_product_url: string;
+    author: string;
+    book_image: string;
+    contributor: string;
+    description: string;
+    id: number;
+    price: number;
+    publisher: string;
+    title: string;
+  };
   id?: string;
-  phone: string;
-  title: string;
 }

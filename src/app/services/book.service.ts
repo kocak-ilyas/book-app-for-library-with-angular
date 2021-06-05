@@ -6,7 +6,14 @@ import { Book } from '../models/book';
   providedIn: 'root',
 })
 export class BookService {
-  apiUrl = 'https://api.airtable.com/v0/appQFrxkao1iyURGH/Books?maxRecords=3&view=Main%20View';
+  apiBase = 'appQFrxkao1iyURGH';
+  apiTable = 'books-list';
+  apiKey = 'keyzGIxPsAuiGk5mE';
+
+  authHeader = {
+    headers: new HttpHeaders({ Authorization: `Bearer ${this.apiKey}` }),
+  };
+  apiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.apiTable}`;
   books!: Book[];
   filteredBook: Book[] = [];
   dialog = { show: false, message: 'No message!!!', spin: false };
@@ -15,13 +22,13 @@ export class BookService {
 
   getBooks(): void {
     this.dialog.spin = true;
-    this.http.get(this.apiUrl,{headers: new HttpHeaders({ Authorization: 'Bearer keyzGIxPsAuiGk5mE' })})
-      .subscribe(
-        (res: any) => { console.log(res);
-          // this.books = res;
-          // this.filteredBook = res;
-          this.dialog.spin = false;
-        },
+    this.http;
+    this.http.get(this.apiUrl, this.authHeader).subscribe(
+      (res: any) => {
+        this.books = res.records;
+        this.filteredBook = res.records;
+        this.dialog.spin = false;
+      },
       (err: any) => this.getError(err.message)
     );
   }
@@ -33,7 +40,6 @@ export class BookService {
       (err: any) => this.getError(err.message)
     );
     this.getDialogModal();
-
   }
   deleteBook(book: any): void {
     this.http.delete(this.apiUrl + '/cards/' + book.id).subscribe(
@@ -60,9 +66,24 @@ export class BookService {
     searchText = searchText.toLowerCase();
     this.filteredBook = this.books.filter((book: Book) => {
       return (
-        book.title.toLowerCase().indexOf(searchText) > -1 ||
-        (book.name && book.name.toLowerCase().indexOf(searchText) > -1)
+        (book.fields &&
+          book.fields.title.toLowerCase().indexOf(searchText) > -1) ||
+        (book.fields &&
+          book.fields.author.toLowerCase().indexOf(searchText) > -1) ||
+        (book.fields &&
+          book.fields.author.toLowerCase().indexOf(searchText) > -1) ||
+        (book.fields &&
+          book.fields.author.toLowerCase().indexOf(searchText) > -1)
       );
     });
   }
 }
+
+// "author" column filter:
+// https://api.airtable.com/v0/appQFrxkao1iyURGH/books-list?fields%5B%5D=author
+
+// "author" and “name” column filter:
+// https://api.airtable.com/v0/appQFrxkao1iyURGH/books-list?fields%5B%5D=author&fields%5B%5D=name
+
+// add sorting to author column "desc" (opposite of "asc")
+// https://api.airtable.com/v0/appQFrxkao1iyURGH/books-list?fields%5B%5D=author&sort%5B0%5D%5Bfield%5D=author&sort%5B0%5D%5Bdirection%5D=desc
