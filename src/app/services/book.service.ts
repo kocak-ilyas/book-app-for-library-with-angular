@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 
@@ -6,7 +6,7 @@ import { Book } from '../models/book';
   providedIn: 'root',
 })
 export class BookService {
-  apiUrl = 'https://demo.limantech.com/cards/public/api';
+  apiUrl = 'https://api.airtable.com/v0/appQFrxkao1iyURGH/Books?maxRecords=3&view=Main%20View';
   books!: Book[];
   filteredBook: Book[] = [];
   dialog = { show: false, message: 'No message!!!', spin: false };
@@ -15,13 +15,13 @@ export class BookService {
 
   getBooks(): void {
     this.dialog.spin = true;
-    this.http.get<Book[]>(this.apiUrl + '/cards').subscribe(
-      (res: Book[]) => {
-        this.books = res;
-        this.filteredBook = res;
-
-        this.dialog.spin = false;
-      },
+    this.http.get(this.apiUrl,{headers: new HttpHeaders({ Authorization: 'Bearer keyzGIxPsAuiGk5mE' })})
+      .subscribe(
+        (res: any) => { console.log(res);
+          // this.books = res;
+          // this.filteredBook = res;
+          this.dialog.spin = false;
+        },
       (err: any) => this.getError(err.message)
     );
   }
@@ -33,7 +33,7 @@ export class BookService {
       (err: any) => this.getError(err.message)
     );
     this.getDialogModal();
-    
+
   }
   deleteBook(book: any): void {
     this.http.delete(this.apiUrl + '/cards/' + book.id).subscribe(
