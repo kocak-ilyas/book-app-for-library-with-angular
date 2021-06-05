@@ -13,28 +13,33 @@ export class BookService {
   authHeader = {
     headers: new HttpHeaders({ Authorization: `Bearer ${this.apiKey}` }),
   };
-  apiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.apiTable}?`;
+  apiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.apiTable}`;
   books!: Book[];
   filteredBook: Book[] = [];
-  dialog = { show: false, message: 'No message!!!', spin: false };
+  dialog = { show: false, message: '...', spin: false };
 
   constructor(private http: HttpClient) {}
 
   getBooks(): void {
     this.dialog.spin = true;
     this.http;
-    this.http.get(this.apiUrl, this.authHeader).subscribe(
-      (res: any) => {
-        console.log(res.records)
-        this.books = res.records;
-        this.filteredBook = res.records;
-        this.dialog.spin = false;
-      },
-      (err: any) => this.getError(err.message)
-    );
+    this.http
+      .get(
+        this.apiUrl +
+          '?sort%5B0%5D%5Bfield%5D=id&sort%5B0%5D%5Bdirection%5D=desc',
+        this.authHeader
+      )
+      .subscribe(
+        (res: any) => {
+          this.books = res.records;
+          this.filteredBook = res.records;
+          this.dialog.spin = false;
+        },
+        (err: any) => this.getError(err.message)
+      );
   }
   postBook(book: Book): void {
-    this.http.post(this.apiUrl + '/cards', book).subscribe(
+    this.http.post(this.apiUrl, book).subscribe(
       (res: any) => {
         this.dialog.message = res || 'book added!!!';
       },
@@ -43,9 +48,11 @@ export class BookService {
     this.getDialogModal();
   }
   deleteBook(book: any): void {
-    this.http.delete(this.apiUrl + '/cards/' + book.id).subscribe(
+    this.http.delete(this.apiUrl + '/' + book.id, this.authHeader).subscribe(
       (res: any) => {
-        this.dialog.message = res || 'book deleted!!!';
+        res.deleted
+          ? (this.dialog.message = 'Book DELETED!!!')
+          : null;
       },
       (err: any) => this.getError(err.message)
     );
@@ -57,7 +64,7 @@ export class BookService {
       window.setTimeout(() => {
         this.dialog.show = false;
         this.getBooks();
-      }, 2000);
+      }, 4000);
   }
   getError(err: string): void {
     this.dialog.message = err;
