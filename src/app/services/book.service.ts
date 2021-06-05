@@ -13,7 +13,7 @@ export class BookService {
   authHeader = {
     headers: new HttpHeaders({ Authorization: `Bearer ${this.apiKey}` }),
   };
-  apiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.apiTable}`;
+  apiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.apiTable}?`;
   books!: Book[];
   filteredBook: Book[] = [];
   dialog = { show: false, message: 'No message!!!', spin: false };
@@ -25,6 +25,7 @@ export class BookService {
     this.http;
     this.http.get(this.apiUrl, this.authHeader).subscribe(
       (res: any) => {
+        console.log(res.records)
         this.books = res.records;
         this.filteredBook = res.records;
         this.dialog.spin = false;
