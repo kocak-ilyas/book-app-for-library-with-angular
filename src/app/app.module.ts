@@ -11,18 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookSearchComponent } from './components/header/book-search/book-search.component';
 @NgModule({
   declarations: [AppComponent, HomeComponent, HeaderComponent, AboutComponent, BookSearchComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-  ],
-  // providers: [
-  //   {
-  //     provide: 'apiUrl',
-  //     useValue: 'https://demo.limantech.com/cards/public/api',
-  //   },
-  // ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule],
+  providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

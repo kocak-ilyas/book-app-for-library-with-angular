@@ -13,11 +13,21 @@ export class BookModalComponent implements OnInit {
   constructor(private fb: FormBuilder, public bookService: BookService) {}
   ngOnInit(): void {
     this.bookForm = this.fb.group({
-      name: ['', Validators.maxLength(50)],
-      title: ['', [Validators.required, Validators.maxLength(255)]],
-      phone: ['', [Validators.required, Validators.maxLength(20)]],
-      email: ['', [Validators.email, Validators.maxLength(50)]],
-      address: ['', Validators.maxLength(255)],
+      createdTime: [''],
+      fields: {
+        amazon_product_url: [''],
+        author: [''],
+        book_image: [''],
+        contributor: [''],
+        description: [''],
+        id: [''],
+        price: [''],
+        publisher: [''],
+        title: [''],
+      },
+      id: [''],
+      // phone: ['', [Validators.required, Validators.maxLength(20)]],
+      // email: ['', [Validators.email, Validators.maxLength(50)]],
     });
   }
 }

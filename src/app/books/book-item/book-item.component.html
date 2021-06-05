@@ -1,43 +1,45 @@
 <div class="container m-1 p-1">
   <div class="card">
     <div class="d-flex mb-1 position-relative">
-      <img class="rounded-top m-0 p-0 product-img" width="100%" height="140px"
-        src="https://st2.depositphotos.com/1105977/5461/i/600/depositphotos_54615585-stock-photo-old-books-on-wooden-table.jpg"
-        alt="alt" />
-      <div class="container position-absolute">
-        <div class="row justify-content-start m-0 p-0">
-          <div class="badge bg-secondary m-0 pt-0 pr-1 pl-1 filter-badge">
-          
-            title: {{ book.title }}
+      <img class="rounded-top m-0 p-0 product-img" width="100%" height="140px" src="{{ book.fields?.book_image}}"
+        alt="{{book.fields?.title}}" />
+      <div class="container position-absolute align-self-end">
+        <div class="row justify-content-end m-0 p-0">
+          <div class="badge bg-info badge-title">
+            <strong class="text-dark">{{ book.fields?.title || "-" }}</strong>
           </div>
         </div>
       </div>
       <div class="col align-self-end position-absolute m-0 p-3">
         <img class="border border-1 rounded-circle m-1 p-0"
-          src="data:image/jpeg;base64,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"
-          alt="alt" width="20%" height="20%" />
+          src="https://i.pinimg.com/originals/13/9f/a5/139fa564052a6ac1c274ad82234df613.jpg" alt="circleImage"
+          width="20%" height="20%" />
       </div>
     </div>
     <div class="d-flex justify-content-between install mt-0">
       <div class="container">
         <div class="row row-cols-1 p-1">
           <div class="row justify-content-end m-0 pl-4">
-            <span class="book-text">Phone: {{ book.phone }}</span>
+            <span class="book-text">written by {{ book.fields?.author || "-" }}</span>
           </div>
-          <div class="col title">
-            <h6> Name:  {{ book.name || "-" }}</h6>
+          <div class="col m-0 p-1">
+            <span class="book-text">Publisher: {{ book.fields?.publisher || "-" }} </span>
           </div>
-          <div class="col m-0 p-0">
-            <span class="book-text">
-              email: {{ book.email || "-" }} </span>
-          </div>
-          <div class="col m-0 p-0 mb-5">
+          <div class="col m-0 p-1 mb-5">
             <div class="text-black-50 address">
-              <span class="book-text"> address: {{ book.address || "-" }} / id: {{ book.id }}</span>
+              <span class="book-text">{{
+                book.fields?.description || "-"
+                }}</span>
             </div>
           </div>
-          <button type="button" class="btn btn-danger book-button btn-sm position-absolute bottom-0 end-0"
-            (click)="bookService.deleteBook(book)">
+          <button type="button" class="
+                        btn btn-danger
+                        book-button
+                        btn-sm
+                        position-absolute
+                        bottom-0
+                        end-0
+                      " (click)="bookService.deleteBook(book)">
             Delete
           </button>
         </div>

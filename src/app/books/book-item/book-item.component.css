@@ -1,14 +1,12 @@
-.title {
-  font-size: 1rem;
-  line-height: 1.2;
-  height: 1px;
+.badge-title {
   overflow: hidden;
   text-overflow: ellipsis;
+  opacity: 0.9;
 }
 .address {
   font-size: 0.6rem;
-  line-height: 3;
-  height: 22px;
+  line-height: 1;
+  height: 19px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -19,22 +17,17 @@
   height: 15px;
 }
 
-.item-container{
-  max-height:  400px
-}
-
-.book-text{
+.book-text {
   font-size: 0.6rem;
   height: 15px;
   margin: 0px;
   padding: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.book-button{
- width: 50px;
- margin: 6px;
- /* margin-left: 100px;
- margin-bottom: 5px;
- padding: 1px; */
- font-size: 0.7rem;
+.book-button {
+  width: 50px;
+  margin: 6px;
+  font-size: 0.7rem;
 }

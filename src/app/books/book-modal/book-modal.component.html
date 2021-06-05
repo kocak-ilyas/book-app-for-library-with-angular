@@ -15,32 +15,42 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="bookModalLabel">
-          Add new Book
-        </h5>
+        <h5 class="modal-title" id="bookModalLabel">Add new Book</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="bookForm">
           <div class="mb-1">
-            <label for="recipient-name1" class="col-form-label">Title: required max(255)</label>
-            <input type="text" class="form-control" id="recipient-name1" formControlName="title" />
+            <label for="title" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="title" formControlName="title" />
           </div>
           <div class="mb-1">
-            <label for="recipient-name3" class="col-form-label">Phone: required max(20)</label>
-            <input type="text" class="form-control" id="recipient-name3" formControlName="phone" />
+            <label for="author" class="col-form-label">Author:</label>
+            <input type="text" class="form-control" id="author" formControlName="author" />
           </div>
           <div class="mb-1">
-            <label for="recipient-name2" class="col-form-label">Name: max(50)</label>
-            <input type="text" class="form-control" id="recipient-name2" formControlName="name" />
+            <label for="publisher" class="col-form-label">Publisher:</label>
+            <input type="text" class="form-control" id="publisher" formControlName="publisher" />
           </div>
           <div class="mb-1">
-            <label for="recipient-name4" class="col-form-label">Email: mail max(50)</label>
-            <input type="text" class="form-control" id="recipient-name4" formControlName="email" />
+            <label for="contributor" class="col-form-label">contributor</label>
+            <input class="form-control" id="contributor" formControlName="contributor" />
           </div>
           <div class="mb-1">
-            <label for="address-text" class="col-form-label">Address: maxLength(255)</label>
-            <textarea class="form-control" id="address-text" formControlName="address"></textarea>
+            <label for="price" class="col-form-label">Price</label>
+            <input class="form-control" id="price" formControlName="price" />
+            </div>
+            <div class="mb-1">
+              <label for="book_image" class="col-form-label">Book image url</label>
+              <input class="form-control" id="book_image" formControlName="book_image" />
+            </div>
+            <div class="mb-1">
+              <label for="amazon_product_url" class="col-form-label">Product url:</label>
+              <input class="form-control" id="amazon_product_url" formControlName="amazon_product_url" />
+            </div>
+            <div class="mb-1">
+              <label for="description" class="col-form-label">Description:</label>
+              <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
           </div>
         </form>
       </div>
