@@ -12,22 +12,19 @@ export class BookModalComponent implements OnInit {
 
   constructor(private fb: FormBuilder, public bookService: BookService) {}
   ngOnInit(): void {
-    this.bookForm = this.fb.group({
-      createdTime: [''],
-      fields: {
-        amazon_product_url: [''],
-        author: [''],
-        book_image: [''],
-        contributor: [''],
-        description: [''],
+    this.bookForm = this.fb.group({      
+        amazon_product_url: ['', [Validators.required, Validators.maxLength(20)]],
+        author: ['', [Validators.required, Validators.maxLength(20)]],
+        book_image: ['', [Validators.required, Validators.maxLength(20)]],
+        contributor: ['', [Validators.required, Validators.maxLength(20)]],
+        description: ['', [Validators.required, Validators.maxLength(20)]],
         id: [''],
-        price: [''],
-        publisher: [''],
-        title: [''],
-      },
-      id: [''],
-      // phone: ['', [Validators.required, Validators.maxLength(20)]],
-      // email: ['', [Validators.email, Validators.maxLength(50)]],
-    });
+        price: ['', [Validators.required, Validators.maxLength(20)]],
+        publisher: ['', [Validators.required, Validators.maxLength(20)]],
+        title:['', [Validators.required, Validators.maxLength(20)]]     
+      });
+    }
   }
-}
+  
+  // phone: ['', [Validators.required, Validators.maxLength(20)]],
+  // email: ['', [Validators.email, Validators.maxLength(50)]],
