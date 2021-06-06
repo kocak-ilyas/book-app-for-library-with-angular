@@ -1,39 +1,18 @@
 <header class="bg-dark text-white p-1">
   <div class="container">
-    <div
-      class="
-        d-flex
-        flex-wrap
-        align-items-center
-        justify-content-center justify-content-lg-start
-      "
-    >
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <ul class="nav col-lg-auto me-lg-auto m-0 justify-content-center">
         <li>
-          <a
-            routerLink="/"
-            class="nav-link px-2 text-secondary"
-            routerLinkActive="text-white"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
+          <a routerLink="/" class="nav-link px-2 text-secondary" routerLinkActive="text-white"
+            [routerLinkActiveOptions]="{ exact: true }">
             Home
           </a>
         </li>
         <li>
-          <a
-            routerLink="/about"
-            class="nav-link px-2 text-secondary"
-            routerLinkActive="text-white"
-            >About</a
-          >
+          <a routerLink="/about" class="nav-link px-2 text-secondary" routerLinkActive="text-white">About</a>
         </li>
         <li>
-          <a
-            routerLink="/books"
-            class="nav-link px-2 text-secondary"
-            routerLinkActive="text-white"
-            >Books</a
-          >
+          <a routerLink="/books" class="nav-link px-2 text-secondary" routerLinkActive="text-white">Books</a>
         </li>
       </ul>
       <app-book-search></app-book-search>

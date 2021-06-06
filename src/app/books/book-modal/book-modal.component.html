@@ -21,11 +21,11 @@
       <div class="modal-body">
         <form [formGroup]="bookForm">
           <div class="mb-1">
-            <label for="title" class="col-form-label">Title:</label>
+            <label for="title" class="col-form-label">Title: ***required</label>
             <input type="text" class="form-control" id="title" formControlName="title" />
           </div>
           <div class="mb-1">
-            <label for="author" class="col-form-label">Author:</label>
+            <label for="author" class="col-form-label">Author: ***required</label>
             <input type="text" class="form-control" id="author" formControlName="author" />
           </div>
           <div class="mb-1">
@@ -33,24 +33,24 @@
             <input type="text" class="form-control" id="publisher" formControlName="publisher" />
           </div>
           <div class="mb-1">
-            <label for="contributor" class="col-form-label">contributor</label>
+            <label for="contributor" class="col-form-label">Contributor:</label>
             <input class="form-control" id="contributor" formControlName="contributor" />
           </div>
-          <div class="mb-1">
-            <label for="price" class="col-form-label">Price</label>
+          <!-- <div class="mb-1">
+            <label for="price" class="col-form-label">Price: (must be number)</label>
             <input class="form-control" id="price" formControlName="price" />
-            </div>
-            <div class="mb-1">
-              <label for="book_image" class="col-form-label">Book image url</label>
-              <input class="form-control" id="book_image" formControlName="book_image" />
-            </div>
-            <div class="mb-1">
-              <label for="amazon_product_url" class="col-form-label">Product url:</label>
-              <input class="form-control" id="amazon_product_url" formControlName="amazon_product_url" />
-            </div>
-            <div class="mb-1">
-              <label for="description" class="col-form-label">Description:</label>
-              <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+          </div> -->
+          <div class="mb-1">
+            <label for="book_image" class="col-form-label">Book image url:</label>
+            <input class="form-control" id="book_image" formControlName="book_image" />
+          </div>
+          <div class="mb-1">
+            <label for="amazon_product_url" class="col-form-label">Product url:</label>
+            <input class="form-control" id="amazon_product_url" formControlName="amazon_product_url" />
+          </div>
+          <div class="mb-1">
+            <label for="description" class="col-form-label">Description:</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
           </div>
         </form>
       </div>
@@ -58,14 +58,10 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" 
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="bookForm.invalid"
           (click)="bookService.postBook(bookForm.value)">
           Save Book
         </button>
-        <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="bookForm.invalid"
-          (click)="bookService.postBook(bookForm.value)">
-          Save Book
-        </button> -->
       </div>
     </div>
   </div>

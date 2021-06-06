@@ -7,7 +7,7 @@ export interface Book {
     contributor: string;
     description: string;
     id: number;
-    price: number;
+    // price: number;
     publisher: string;
     title: string;
   };

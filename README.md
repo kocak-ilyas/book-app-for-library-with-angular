@@ -5,5 +5,10 @@ with Angular
 <hr/>
 book app for library
 
-input reqired
-1-13 old-book updade
+email: kocakilyas18@gmail.com
+
+
+# fix it:
+* price input - 6 items
+* book update
+* delete // authHeader
