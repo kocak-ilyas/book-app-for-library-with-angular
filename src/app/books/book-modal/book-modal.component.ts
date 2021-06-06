@@ -15,10 +15,8 @@ export class BookModalComponent implements OnInit {
     this.bookForm = this.fb.group({
       amazon_product_url: [''],
       author: ['', [Validators.required]],
-      book_image: [''],
-      contributor: [''],
+      book_image: [''],  
       description: [''],
-      // price: [0],
       publisher: [''],
       title: ['', [Validators.required]],
     });

@@ -1,8 +1,8 @@
 <div class="container m-1 p-1">
   <div class="card">
     <div class="d-flex mb-1 position-relative">
-      <img class="rounded-top m-0 p-0 product-img" width="100%" height="140px" src="{{ book.fields?.book_image}}"
-        alt="{{book.fields?.title}}" />
+      <img class="rounded-top m-0 p-0 product-img" width="100%" height="140px" src="{{ book.fields?.book_image }}"
+        alt="{{ book.fields?.title }}" />
       <div class="container position-absolute align-self-end">
         <div class="row justify-content-end m-0 p-0">
           <div class="badge bg-info badge-title">
@@ -12,28 +12,35 @@
       </div>
       <div class="col align-self-end position-absolute m-0 p-3">
         <img class="border border-1 rounded-circle m-1 p-0"
-          src="https://i.pinimg.com/originals/13/9f/a5/139fa564052a6ac1c274ad82234df613.jpg" alt="circleImage"
-          width="20%" height="20%" />
+          src="https://i.pinimg.com/originals/13/9f/a5/139fa564052a6ac1c274ad82234df613.jpg" alt="circleImage" width="20%"
+          height="20%" />
       </div>
     </div>
     <div class="d-flex justify-content-between install mt-0">
       <div class="container">
         <div class="row row-cols-1 p-1">
           <div class="row justify-content-end m-0 pl-4">
-            <span class="book-text">written by {{ book.fields?.author || "-" }}</span>
+            <a href="{{ book.fields?.amazon_product_url }}" class="book-text">written by {{ book.fields?.author || "-" }}</a>
           </div>
           <div class="col m-0 p-1">
-            <span class="book-text">Publisher: {{ book.fields?.publisher || "-" }} </span>
+            <span class="book-text">Publisher: {{ book.fields?.publisher || "-" }}
+            </span>
           </div>
           <div class="col m-0 p-1 mb-5">
             <div class="text-black-50 address">
               <span class="book-text">{{
                 book.fields?.description || "-"
-                }}</span>
+              }}</span>
             </div>
           </div>
-          <button type="button" class="btn btn-danger book-button btn-sm position-absolute bottom-0 end-0"
-            (click)="bookService.deleteBook(book)">
+          <button type="button" class="
+                        btn btn-danger
+                        book-button
+                        btn-sm
+                        position-absolute
+                        bottom-0
+                        end-0
+                      " (click)="bookService.deleteBook(book)">
             Delete
           </button>
         </div>

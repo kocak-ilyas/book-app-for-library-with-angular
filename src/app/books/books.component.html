@@ -1,9 +1,9 @@
 <div *ngIf="bookService.dialog.show" class="alert alert-primary" role="alert">
   {{ bookService.dialog.message }}
 </div>
-<div *ngIf="bookService.dialog.spin" class="d-flex justify-content-center m-5">
-  <div class="spinner-border text-info" role="status"></div>
-  <strong class="sr-only text-info p-1">&nbsp; Loading...</strong>
+<div *ngIf="bookService.dialog.spin" class="d-flex justify-content-center m-0">
+  <div class="spinner-border text-info m-1" role="status"></div>
+  <strong class="sr-only text-info pt-2">&nbsp; Loading...</strong>
 </div>
 <div *ngIf="!bookService.dialog.spin">
   <app-book-modal></app-book-modal>
