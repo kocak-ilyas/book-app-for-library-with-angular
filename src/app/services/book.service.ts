@@ -6,6 +6,11 @@ import { Book } from '../models/book';
   providedIn: 'root',
 })
 export class BookService {
+  userData = {
+    queryUrl:
+      'https://api.airtable.com/v0/appQFrxkao1iyURGH/books-list?api_key=keyzGIxPsAuiGk5mE&fields%5B%5D=title&filterByFormula=SEARCH(%7Btitle%7D%2C%22xxx%22)%3E0',
+  };
+  findItem: string = '';
   apiBase = 'appQFrxkao1iyURGH';
   apiTable = 'books-list';
   apiKey = 'keyzGIxPsAuiGk5mE';
@@ -27,9 +32,21 @@ export class BookService {
 
   constructor(private http: HttpClient) {}
 
+  queryAuth(): void {
+    this.findItem = 'admin@admin.com';
+    this.http
+      .get(
+`https://api.airtable.com/v0/appQFrxkao1iyURGH/users?api_key=keyzGIxPsAuiGk5mE&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22${this.findItem}%22)%3E0`
+// `https://api.airtable.com/v0/appQFrxkao1iyURGH/users?api_key=keyzGIxPsAuiGk5mE&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22admin@admin.com%22)%3E0`
+// `https://api.airtable.com/v0/appQFrxkao1iyURGH/users?api_key=keyzGIxPsAuiGk5mE&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22${this.findItem}%22)%3E0`
+// https://api.airtable.com/v0/appQFrxkao1iyURGH/users?api_key=keyzGIxPsAuiGk5mE&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22             xxx%22)%3E0        
+      ).subscribe((res: any) => {
+        console.log(res);
+      });
+  }
   getBooks(): void {
+    this.queryAuth()
     this.dialog.spin = true;
-    this.http;
     this.http
       .get(
         this.apiUrl +
@@ -42,7 +59,7 @@ export class BookService {
           this.filteredBook = res.records;
           this.dialog.spin = false;
         },
-        (err: any) => this.getError(err.message)
+        (err: any) => this.getError(err)
       );
   }
   postBook(fields: Book): void {
