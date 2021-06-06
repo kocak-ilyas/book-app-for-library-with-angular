@@ -16,6 +16,7 @@ export class BookService {
   //     'Content-Type': 'application/json',
   //   }),
   // };
+  // apiUrlWithKey="https://api.airtable.com/v0/appQFrxkao1iyURGH/books-list?api_key=keyzGIxPsAuiGk5mE"
   authHeader = { headers: { Authorization: `Bearer ${this.apiKey}` } };
   apiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.apiTable}`;
 
@@ -86,10 +87,6 @@ export class BookService {
       return (
         (book.fields &&
           book.fields.title.toLowerCase().indexOf(searchText) > -1) ||
-        (book.fields &&
-          book.fields.author.toLowerCase().indexOf(searchText) > -1) ||
-        (book.fields &&
-          book.fields.author.toLowerCase().indexOf(searchText) > -1) ||
         (book.fields &&
           book.fields.author.toLowerCase().indexOf(searchText) > -1)
       );

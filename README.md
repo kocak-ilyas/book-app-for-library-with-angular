@@ -13,3 +13,4 @@ email: kocakilyas18@gmail.com
 * book update
 * delete // authHeader
 * nellify page Not Found /Book /About
+* maxRecords=100
