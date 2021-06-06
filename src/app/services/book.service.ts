@@ -11,14 +11,32 @@ export class BookService {
   apiKey = 'keyzGIxPsAuiGk5mE';
 
   authHeader = {
-    headers: new HttpHeaders({ Authorization: `Bearer ${this.apiKey}` }),
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${this.apiKey}`,
+      'Content-Type': 'application/json',
+    }),
   };
   apiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.apiTable}`;
   books!: Book[];
   filteredBook: Book[] = [];
   dialog = { show: false, message: '...', spin: false };
 
-  constructor(private http: HttpClient) {}
+  tempHead: any;
+  xxx = {
+    fields: {
+      publisher: '2xxx',
+      description: '2xxx',
+      price: 999,
+      title: '2xxx',
+      author: '2xxx',
+      contributor: '1xxx',
+      book_image:
+        'https://storage.googleapis.com/du-prd/books/images/9780385547680.jpg',
+      amazon_product_url:
+        'https://www.amazon.com/dp/0385547684?tag=NYTBSREV-20',
+    },
+  };
+  constructor(private http: HttpClient) { }
 
   getBooks(): void {
     this.dialog.spin = true;
@@ -26,7 +44,7 @@ export class BookService {
     this.http
       .get(
         this.apiUrl +
-          '?sort%5B0%5D%5Bfield%5D=id&sort%5B0%5D%5Bdirection%5D=desc',
+        '?maxRecords=8&view=Grid%20view&sort%5B0%5D%5Bfield%5D=id&sort%5B0%5D%5Bdirection%5D=desc',
         this.authHeader
       )
       .subscribe(
@@ -38,21 +56,26 @@ export class BookService {
         (err: any) => this.getError(err.message)
       );
   }
-  postBook(book: Book): void {
-    this.http.post(this.apiUrl, book).subscribe(
-      (res: any) => {
-        this.dialog.message = res || 'book added!!!';
-      },
-      (err: any) => this.getError(err.message)
-    );
-    this.getDialogModal();
+  postBook(fields: Book): void {
+    this.tempHead = { fields };
+    console.log(this.tempHead);
+    this.http
+      .post(this.apiUrl, this.xxx, this.authHeader)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
+    // this.http.post(this.apiUrl, book).subscribe(
+    //   (res: any) => {
+    //     this.dialog.message = res || 'book added!!!';
+    //   },
+    //   (err: any) => this.getError(err.message)
+    // );
+    // this.getDialogModal();
   }
   deleteBook(book: any): void {
     this.http.delete(this.apiUrl + '/' + book.id, this.authHeader).subscribe(
       (res: any) => {
-        res.deleted
-          ? (this.dialog.message = 'Book DELETED!!!')
-          : null;
+        res.deleted ? (this.dialog.message = 'Book DELETED!!!') : null;
       },
       (err: any) => this.getError(err.message)
     );
@@ -64,7 +87,7 @@ export class BookService {
       window.setTimeout(() => {
         this.dialog.show = false;
         this.getBooks();
-      }, 4000);
+      }, 2000);
   }
   getError(err: string): void {
     this.dialog.message = err;

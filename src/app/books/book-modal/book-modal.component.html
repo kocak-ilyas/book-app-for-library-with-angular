@@ -58,10 +58,14 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="bookForm.invalid"
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" 
           (click)="bookService.postBook(bookForm.value)">
           Save Book
         </button>
+        <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="bookForm.invalid"
+          (click)="bookService.postBook(bookForm.value)">
+          Save Book
+        </button> -->
       </div>
     </div>
   </div>
