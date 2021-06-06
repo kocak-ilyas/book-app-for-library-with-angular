@@ -12,3 +12,4 @@ email: kocakilyas18@gmail.com
 * price input - 6 items
 * book update
 * delete // authHeader
+* nellify page Not Found /Book /About

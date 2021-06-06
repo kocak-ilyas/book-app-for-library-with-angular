@@ -59,7 +59,9 @@ export class BookService {
   deleteBook(book: any): void {
     this.http.delete(this.apiUrl + '/' + book.id, this.authHeader).subscribe(
       (res: any) => {
-        res.deleted ? (this.dialog.message = 'Book DELETED!!!'):(this.dialog.message = 'There is a problem deleting')
+        res.deleted
+          ? (this.dialog.message = 'Book DELETED!!!')
+          : (this.dialog.message = 'There is a problem deleting');
       },
       (err: any) => this.getError(err)
     );
@@ -71,6 +73,7 @@ export class BookService {
       this.getBooks(),
       window.setTimeout(() => {
         this.dialog.show = false;
+        this.dialog.message = '';
       }, 2000);
   }
   getError(err: string): void {
