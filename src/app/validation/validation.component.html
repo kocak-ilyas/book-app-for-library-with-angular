@@ -1,1 +1,6 @@
-<app-sign-in *ngIf="bookService.validation.signIn.showForm"></app-sign-in>
+<app-sign-in *ngIf="bookService.validation"></app-sign-in>
+<div *ngIf="!bookService.validation">
+    Welcome... You are logged in.
+    <hr/>
+    <button type="button" class="btn btn-danger mb-5" (click)="bookService.validation=true">Sign Out</button>
+</div>

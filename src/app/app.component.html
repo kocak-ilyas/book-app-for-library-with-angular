@@ -1,4 +1,7 @@
 <div class="App container-fluid">
     <app-header></app-header>
+    <div *ngIf="bookService.dialog.show" class="alert alert-primary" role="alert">
+        {{ bookService.dialog.message }}
+      </div>
     <router-outlet></router-outlet>
 </div>

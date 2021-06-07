@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book, Sign } from '../models/book';
 
@@ -6,59 +6,19 @@ import { Book, Sign } from '../models/book';
   providedIn: 'root',
 })
 export class BookService {
-  tempEmail: string = '';
-  tempPassword: string = '';
+  apiKey = 'keyzGIxPsAuiGk5mE';
   apiBase = 'appQFrxkao1iyURGH';
   bookTable = 'books-list';
   userTable = 'users';
-
-  apiKey = 'keyzGIxPsAuiGk5mE';
   apiUrl = `https://api.airtable.com/v0/${this.apiBase}/`;
 
   books!: Book[];
   filteredBook: Book[] = [];
   dialog = { show: false, message: 'wait please', spin: false };
-  postedBook: any;
-  validation = {
-    signIn: {
-      showForm: true,
-    }
-  };
+  validation = true;
 
   constructor(private http: HttpClient) {}
 
-  queryEmail(value:Sign): void {
-    this.http
-      .get(
-        this.apiUrl +
-          this.userTable +
-          `?api_key=${this.apiKey}` +
-          `&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22${value.email}%22)`
-      )
-      .subscribe((res: any) => {
-        res.records.length === 1
-          ? this.queryPassword(value)
-          : console.log('Please Sign Up!!!');
-      });
-  }
-  queryPassword(value:Sign): void {
-    try {
-      this.http
-        .get(
-          this.apiUrl +
-            this.userTable +
-            `?api_key=${this.apiKey}` +
-            `&filterByFormula=AND(SEARCH(%7Bemail%7D%2C%22${value.email}%22)%2CSEARCH(%7Bpassword%7D%2C%22${value.password}%22))`
-        )
-        .subscribe((res: any) => {
-          res
-            ? console.log('email tamam,password tamam', res)
-            : console.log('email tamam,password yanlış');
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }
   getBooks(): void {
     this.dialog.spin = true;
     this.http
@@ -78,12 +38,10 @@ export class BookService {
       );
   }
   postBook(fields: Book): void {
-    this.postedBook = { fields };
     this.http
-      .post(
-        this.apiUrl + this.bookTable + `?api_key=${this.apiKey}`,
-        this.postedBook
-      )
+      .post(this.apiUrl + this.bookTable + `?api_key=${this.apiKey}`, {
+        fields,
+      })
       .subscribe(
         (res: any) => {
           res.fields.title
@@ -111,6 +69,43 @@ export class BookService {
         (err: any) => this.getError(err)
       );
     this.getDialogModal();
+  }
+
+  queryEmail(value: Sign): void {
+    this.http
+      .get(
+        this.apiUrl +
+          this.userTable +
+          `?api_key=${this.apiKey}` +
+          `&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22${value.email}%22)`
+      )
+      .subscribe((res: any) => {
+        res.records.length === 1
+          ? this.queryPassword(value)
+          : ((this.dialog.message = 'Username is wrong!!!'),
+            this.getDialogModal());
+      });
+  }
+  queryPassword(value: Sign): void {
+    try {
+      this.http
+        .get(
+          this.apiUrl +
+            this.userTable +
+            `?api_key=${this.apiKey}` +
+            `&filterByFormula=AND(SEARCH(%7Bemail%7D%2C%22${value.email}%22)%2CSEARCH(%7Bpassword%7D%2C%22${value.password}%22))`
+        )
+        .subscribe((res: any) => {
+          res.records.length === 1
+            ? ((this.dialog.message = 'Welcome ' + res.records[0].fields.email),
+              this.getDialogModal(),
+              (this.validation = false))
+            : ((this.dialog.message = 'Password is wrong!!!'),
+              this.getDialogModal());
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   getDialogModal(): void {

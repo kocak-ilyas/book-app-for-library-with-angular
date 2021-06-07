@@ -9,9 +9,8 @@ email: kocakilyas18@gmail.com
 
 
 # fix it:
-* price input - 6 items
+
 * book update
-* delete // authHeader
-* nellify page Not Found /Book /About
-* maxRecords=100
+* netlify page Not Found /Book /Validation
 * .env create
+* Sign Up

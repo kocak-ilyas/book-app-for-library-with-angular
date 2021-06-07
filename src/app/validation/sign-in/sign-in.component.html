@@ -1,7 +1,7 @@
 <div class="container ml-3">
   <form class="row g-3" [formGroup]="signForm">
     <div class="col-md-5">
-      <label for="email" class="form-label">Username</label>
+      <label for="email" class="form-label">Username    (Admin Email: admin@admin.com)</label>
       <div class="input-group">
         <span class="input-group-text" id="mail">@</span>
         <input type="mail" class="form-control" id="email" aria-describedby="mail"
@@ -10,7 +10,7 @@
     </div>
     <br />
     <div class="col-md-5">
-      <label for="password" class="form-label">Password</label>
+      <label for="password" class="form-label">Password (Admin Password: admin)</label>
       <div class="input-group">
         <input type="password" class="form-control" id="password" formControlName="password" required>
       </div>
