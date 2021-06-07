@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book, Sign } from '../models/book';
-import { environment  } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookService {
+  apiKey = 'keyzGIxPsAuiGk5mE'
+  apiBase = 'appQFrxkao1iyURGH'
   bookTable = 'books-list';
   userTable = 'users';
-  apiUrl = `https://api.airtable.com/v0/${environment.apiBase}/`;
+  apiUrl = `https://api.airtable.com/v0/${this.apiBase}/`;
 
   books!: Book[];
   filteredBook: Book[] = [];
@@ -24,7 +25,7 @@ export class BookService {
       .get(
         this.apiUrl +
           this.bookTable +
-          `?api_key=${environment.apiKey}` +
+          `?api_key=${this.apiKey}` +
           '&maxRecords=100&view=Grid%20view&sort%5B0%5D%5Bfield%5D=id&sort%5B0%5D%5Bdirection%5D=desc'
       )
       .subscribe(
@@ -38,7 +39,7 @@ export class BookService {
   }
   postBook(fields: Book): void {
     this.http
-      .post(this.apiUrl + this.bookTable + `?api_key=${environment.apiKey}`, {
+      .post(this.apiUrl + this.bookTable + `?api_key=${this.apiKey}`, {
         fields,
       })
       .subscribe(
@@ -53,11 +54,11 @@ export class BookService {
   }
   deleteBook(book: any): void {
     console.log(
-      this.apiUrl + this.bookTable + '/' + book.id + `?api_key=${environment.apiKey}`
+      this.apiUrl + this.bookTable + '/' + book.id + `?api_key=${this.apiKey}`
     );
     this.http
       .delete(
-        this.apiUrl + this.bookTable + '/' + book.id + `?api_key=${environment.apiKey}`
+        this.apiUrl + this.bookTable + '/' + book.id + `?api_key=${this.apiKey}`
       )
       .subscribe(
         (res: any) => {
@@ -75,7 +76,7 @@ export class BookService {
       .get(
         this.apiUrl +
           this.userTable +
-          `?api_key=${environment.apiKey}` +
+          `?api_key=${this.apiKey}` +
           `&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22${value.email}%22)`
       )
       .subscribe((res: any) => {
@@ -91,7 +92,7 @@ export class BookService {
         .get(
           this.apiUrl +
             this.userTable +
-            `?api_key=${environment.apiKey}` +
+            `?api_key=${this.apiKey}` +
             `&filterByFormula=AND(SEARCH(%7Bemail%7D%2C%22${value.email}%22)%2CSEARCH(%7Bpassword%7D%2C%22${value.password}%22))`
         )
         .subscribe((res: any) => {
