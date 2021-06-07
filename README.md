@@ -14,3 +14,4 @@ email: kocakilyas18@gmail.com
 * netlify page Not Found /Book /Validation
 * .env create
 * Sign Up
+* JWT token
