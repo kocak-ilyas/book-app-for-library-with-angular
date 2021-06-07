@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Book } from '../models/book';
+import { Book, Sign } from '../models/book';
 
 @Injectable({
   providedIn: 'root',
@@ -19,36 +19,40 @@ export class BookService {
   filteredBook: Book[] = [];
   dialog = { show: false, message: 'wait please', spin: false };
   postedBook: any;
+  validation = {
+    signIn: {
+      showForm: true,
+    }
+  };
 
   constructor(private http: HttpClient) {}
-  queryEmail(): void {
-    this.tempEmail = 'admin@admin.com';
+
+  queryEmail(value:Sign): void {
     this.http
       .get(
         this.apiUrl +
           this.userTable +
           `?api_key=${this.apiKey}` +
-          `&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22${this.tempEmail}%22)`
+          `&fields%5B%5D=email&filterByFormula=SEARCH(%7Bemail%7D%2C%22${value.email}%22)`
       )
       .subscribe((res: any) => {
         res.records.length === 1
-          ? this.queryPassword()
+          ? this.queryPassword(value)
           : console.log('Please Sign Up!!!');
       });
   }
-  queryPassword(): void {
-    this.tempPassword = 'admin';
+  queryPassword(value:Sign): void {
     try {
       this.http
         .get(
           this.apiUrl +
             this.userTable +
             `?api_key=${this.apiKey}` +
-            `&filterByFormula=AND(SEARCH(%7Bemail%7D%2C%22${this.tempEmail}%22)%2CSEARCH(%7Bpassword%7D%2C%22${this.tempPassword}%22))`
+            `&filterByFormula=AND(SEARCH(%7Bemail%7D%2C%22${value.email}%22)%2CSEARCH(%7Bpassword%7D%2C%22${value.password}%22))`
         )
         .subscribe((res: any) => {
           res
-            ? console.log('email tamam,password tamam',res)
+            ? console.log('email tamam,password tamam', res)
             : console.log('email tamam,password yanlış');
         });
     } catch (error) {
@@ -56,7 +60,6 @@ export class BookService {
     }
   }
   getBooks(): void {
-    this.queryEmail();//changeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     this.dialog.spin = true;
     this.http
       .get(
@@ -134,20 +137,3 @@ export class BookService {
     });
   }
 }
-
-// authHeader = {
-//   headers: new HttpHeaders({
-//     Authorization: `Bearer ${this.apiKey}`,
-//     'Content-Type': 'application/json',
-//   }),
-// };
-// apiUrlWithKey="https://api.airtable.com/v0/appQFrxkao1iyURGH/books-list?api_key=keyzGIxPsAuiGk5mE"
-
-// userData = {
-//   queryUrl:
-//     'https://api.airtable.com/v0/appQFrxkao1iyURGH/books-list?api_key=keyzGIxPsAuiGk5mE&fields%5B%5D=title&filterByFormula=SEARCH(%7Btitle%7D%2C%22xxx%22)%3E0',
-// };
-// tempId: string = 'rec7miGgEggZzMoe1';
-// authHeader = { headers: { Authorization: `Bearer ${this.apiKey}` } };
-// bookApiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.bookTable}?api_key=${this.apiKey}`;
-// userApiUrl = `https://api.airtable.com/v0/${this.apiBase}/${this.userTable}?api_key=${this.apiKey}`;

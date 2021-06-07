@@ -9,3 +9,7 @@ export interface Book {
   };
   id?: string;
 }
+export interface Sign {
+ email?:string,
+ password?:string,
+}

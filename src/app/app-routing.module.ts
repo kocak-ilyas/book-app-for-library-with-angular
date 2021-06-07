@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
@@ -9,9 +8,9 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'about',
-    component: AboutComponent,
-  },
+    path: 'validation',
+    loadChildren: () =>
+    import('./validation/validation.module').then((m) => m.ValidationModule),  },
   {
     path: 'books',
     loadChildren: () =>

@@ -10,9 +10,9 @@ import { BookService } from 'src/app/services/book.service';
 export class BookModalComponent implements OnInit {
   bookForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, public bookService: BookService) {}
+  constructor(private fbBook: FormBuilder, public bookService: BookService) {}
   ngOnInit(): void {
-    this.bookForm = this.fb.group({
+    this.bookForm = this.fbBook.group({
       amazon_product_url: [''],
       author: ['', [Validators.required]],
       book_image: [''],  

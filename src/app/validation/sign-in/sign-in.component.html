@@ -1,0 +1,24 @@
+<div class="container ml-3">
+  <form class="row g-3" [formGroup]="signForm">
+    <div class="col-md-5">
+      <label for="email" class="form-label">Username</label>
+      <div class="input-group">
+        <span class="input-group-text" id="mail">@</span>
+        <input type="mail" class="form-control" id="email" aria-describedby="mail"
+          placeholder="admin@admin.com" formControlName="email" required>
+      </div>
+    </div>
+    <br />
+    <div class="col-md-5">
+      <label for="password" class="form-label">Password</label>
+      <div class="input-group">
+        <input type="password" class="form-control" id="password" formControlName="password" required>
+      </div>
+    </div>
+    <hr class="m-2"/>
+    <div class="col-12 mb-5">
+      <button class="btn btn-primary" type="button" [disabled]="signForm.invalid"
+        (click)="bookService.queryEmail(signForm.value)">Sign In</button>
+    </div>
+  </form>
+</div>
